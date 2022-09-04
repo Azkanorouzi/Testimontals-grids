@@ -23,5 +23,12 @@ font-family: 'Barlow Semi Condensed', sans-serif;
 }
 /* Grid container-default */
 .grid-container{
+  min-height: 100vh;
   display:grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fill, minmax(90%,500px));
+  grid-template-rows: repeat(5, minmax(10px, max-content));
+  /* Padding and row gap */
+  padding: 60px 20px;
+  row-gap: 20px;
 }
