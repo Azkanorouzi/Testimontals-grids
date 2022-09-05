@@ -119,7 +119,9 @@ min-height: 100vh;
 /* || Tablet and landscape design */
 @media screen and (min-width: 567px) {
   /* Grid container must set to row */
+
 .grid-container{
+  align-content: center;
   /* Padding and row gap */
   gap: 1rem;
   grid-auto-flow: row;
@@ -164,8 +166,11 @@ min-height: 100vh;
 .user-img {
   width: 3rem;
 }
-/* Changing the size of user name */
-
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* Changing grid settings */
 .grid-container{
   min-height:50vh;
