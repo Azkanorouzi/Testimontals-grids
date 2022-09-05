@@ -14,21 +14,198 @@
   /* Neutral colors */
   --Light-gray: hsl(0, 0%, 81%);
   --Light-grayish-blue: hsl(210, 46%, 95%);
+  font-size: 13px;
 }
 /* font */
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
 /* font defaults */
 main {
 font-family: 'Barlow Semi Condensed', sans-serif;
+/* Background-color */
+background: var(--Light-gray);
+color: var(--white);
+min-height: 100vh;
 }
 /* Grid container-default */
 .grid-container{
   min-height: 100vh;
   display:grid;
   grid-auto-flow: column;
-  grid-template-columns: repeat(auto-fill, minmax(90%,500px));
-  grid-template-rows: repeat(5, minmax(10px, max-content));
+  grid-template-columns: repeat(auto-fill, minmax(10px, 80%));
+  grid-template-rows: repeat(auto-fit, minmax(10px, max-content));
   /* Padding and row gap */
-  padding: 60px 20px;
-  row-gap: 20px;
+  padding:5rem 0rem;
+  row-gap: 2rem;
+  justify-content: center;
+}
+/* Card defaults */
+.card{
+  background: red;
+  padding: 2.2rem 3rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+/* Card content defaults */
+.card .user {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+/* Card  image defaults*/
+.user-img {
+  border-radius: 50%;
+  width: 2.5rem;
+  height: auto;
+}
+/* User name defaults */
+.user-name {
+  font-size: 1.05rem;
+}
+/* User status defaults */
+.user-status {
+  opacity: 50%;
+}
+/* User text defaults */
+.user-text-header {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.user-text {
+  opacity: 70%;
+  font-weight: 500;
+}
+/* || CARDS SPECIFICATION || */
+/* Daniel card */
+.daniel-card {
+  background: var(--violate);
+  /* Used for bg-pattern */
+  position: relative;
+}
+/* Daniel card quote pattern */
+.daniel-card:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 5%;
+  opacity: .5;
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  color: var(--white);
+  background: url("./images/bg-pattern-quotation.svg");
+  background-repeat: no-repeat;
+}
+/* Jonathan card */
+.jonathan-card  {
+  background: var(--grayish-blue);
+}
+/* Jeanette card */
+.jeanette-card {
+  background: var(--white);
+  color: var(--grayish-blue);
+}
+/* patrick card */
+.patrick-card {
+  background: var(--blackish-blue);
+}
+/* Kira card */
+.kira-card {
+  background: var(--white);
+  color: var(--grayish-blue);
+}
+
+/* || Tablet and landscape design */
+@media screen and (min-width: 567px) {
+  /* Grid container must set to row */
+.grid-container{
+  /* Padding and row gap */
+  gap: 1rem;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, minmax(10px, 45%));
+}
+/* Increasing user name font-size */
+.user-name {
+  font-size: 1.2rem;
+}
+/* Increasing user text header font-size */
+.user-text-header {
+  line-height: 20px;
+}
+/* Changing the flex-direction of kira's card */
+.kira-card {
+  flex-direction: row;
+  grid-column: span 2;
+  padding: 2rem;
+}
+/* Changing the user section of kira's card */
+.kira-card .user {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  text-align: center;
+}
+.kira-card .user-name {
+  margin-bottom: 5px;
+}
+/* increasing profile picture size */
+.user-img {
+  width: 5rem;
+}
+/* Changing the position of patrick card */
+.patrick-card {
+  grid-area: 1 / 2;
+}
+}
+/* || Desktop design */
+@media screen and (min-width: 1200px) {
+/* Decreasing profile picture size */
+.user-img {
+  width: 3rem;
+}
+/* Changing the size of user name */
+
+/* Changing grid settings */
+.grid-container{
+  min-height:50vh;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 280px);
+  grid-template-rows: repeat(2, minmax(10px, max-content));
+  gap: 2rem;
+  padding:10rem;
+}
+/* Kira back to default */
+.kira-card {
+  flex-direction: column;
+  grid-column: span 1;
+  grid-row: span 2;
+  padding: 3rem;
+}
+/* Changing the user section of kira's card */
+.kira-card .user {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  text-align: left;
+}
+.kira-card .user-name {
+  margin-bottom: 5px;
+}
+/* Changing the orders */
+/* Jonathan */
+.jonathan-card {
+  grid-area: 1 / 3;
+}
+/* patrick */
+.patrick-card {
+  grid-area: 2 / 2 / 3 / 4;
+}
+/* daniel */
+.daniel-card {
+  grid-column: span 2;
+}
+.user-text {
+  line-height: 20px;
+}
 }
