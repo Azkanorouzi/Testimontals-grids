@@ -22,7 +22,7 @@
 main {
 font-family: 'Barlow Semi Condensed', sans-serif;
 /* Background-color */
-background: var(--Light-gray);
+background: linear-gradient(#001d3daa,#001d3daa),url(images/pat1.png);
 color: var(--white);
 min-height: 100vh;
 }
@@ -51,6 +51,7 @@ min-height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  opacity: .8;
 }
 /* Card content defaults */
 .card .user {
