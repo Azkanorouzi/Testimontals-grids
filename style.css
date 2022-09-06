@@ -7,13 +7,13 @@
 /* Colors */
 :root {
   /* Primary colors */
-  --violate: hsl(263, 55%, 52%);
-  --grayish-blue: hsl(217, 19%, 35%);
-  --blackish-blue: hsl(219, 29%, 14%);
-  --white: hsl(0, 0%, 100%);
+  --orange: #ffc300;
+  --card-bg-1: #09BCBA;
+  --blackish-blue: #000814;
+  --white: #003366;
   /* Neutral colors */
-  --Light-gray: hsl(0, 0%, 81%);
-  --Light-grayish-blue: hsl(210, 46%, 95%);
+  --Light-gray: #001d3d;
+  --Light: #003366;
   font-size: 13px;
 }
 /* font */
@@ -26,6 +26,11 @@ background: var(--Light-gray);
 color: var(--white);
 min-height: 100vh;
 }
+/* Changing the selection default */
+::selection {
+  background: darkblue;
+  color: white;
+}
 /* Grid container-default */
 .grid-container{
   min-height: 100vh;
@@ -37,10 +42,10 @@ min-height: 100vh;
   padding:5rem 0rem;
   row-gap: 2rem;
   justify-content: center;
+  pointer-events: none;
 }
 /* Card defaults */
 .card{
-  background: red;
   padding: 2.2rem 3rem;
   border-radius: 1rem;
   display: flex;
@@ -79,7 +84,7 @@ min-height: 100vh;
 /* || CARDS SPECIFICATION || */
 /* Daniel card */
 .daniel-card {
-  background: var(--violate);
+  background: var(--orange);
   /* Used for bg-pattern */
   position: relative;
 }
@@ -99,23 +104,56 @@ min-height: 100vh;
 }
 /* Jonathan card */
 .jonathan-card  {
-  background: var(--grayish-blue);
+  background: var(--card-bg-1);
 }
 /* Jeanette card */
 .jeanette-card {
   background: var(--white);
-  color: var(--grayish-blue);
+  color: var(--card-bg-1);
 }
 /* patrick card */
 .patrick-card {
   background: var(--blackish-blue);
+  color: rgb(200, 200, 200);
+
 }
 /* Kira card */
 .kira-card {
   background: var(--white);
-  color: var(--grayish-blue);
+  color: var(--card-bg-1);
 }
+@media (hover:hover){
+  /* Animation hover */
+.card {
+  pointer-events: auto;
+}
+.grid-container, .card {
+  transition: .5s;
+}
+/* Cards that are not hovered */
+.grid-container:hover > .card:not(:hover){
+  filter: blur(2px);
+}
+/* Increasing the gap between the elements */
 
+/* Card hover */
+.card:hover {
+  filter: drop-shadow(1px 1px  255px cyan);
+}
+/* Kira card hover effect */
+.kira-card:hover {
+  transform: translateX(1.5rem);
+}
+:is(.jonathan-card,.daniel-card):hover{
+  transform: translateY(-1.5rem);
+}
+.patrick-card:hover {
+  transform: translateY(1.5rem);
+}
+.jeanette-card:hover {
+  transform: translateX(-1.5rem);
+}
+}
 /* || Tablet and landscape design */
 @media screen and (min-width: 567px) {
   /* Grid container must set to row */
@@ -213,4 +251,33 @@ main {
 .user-text {
   line-height: 20px;
 }
+}
+/* Animations */
+@keyframes showCard{
+  from{
+    opacity: 0;
+    transform: scale(0);
+    background: white;
+  }
+  to {
+    transform: translate(0);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes showContent{
+  from{
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.card {
+  animation: showCard .5s ease-out;
+}
+.card > * {
+  animation: showContent 1.5s ease-in;
 }
